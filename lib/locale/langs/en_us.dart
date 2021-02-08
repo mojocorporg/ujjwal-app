@@ -6,4 +6,11 @@ const Map<String, String> enUS = {
   "enterOtpTitle" : "Enter OTP",
   "resentOtp" : "Resent OTP",
   "login" : "Log In",
+  "selectLocation" : "Select Location",
+  "call" : "Call",
+  "share" : "Share",
+  "tags" : "Tags",
+  "exportVcard" : "Export VCard",
+  "no" : "No",
+  "yes" : "Yes",
 };

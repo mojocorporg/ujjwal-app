@@ -41,7 +41,7 @@ class UserPreferences {
 
 
   String getBearerToken() {
-    return '${getStorage.read(SHARED_USER_TOKEN)}';
+    return 'Bearer ${getStorage.read(SHARED_USER_TOKEN)}';
   }
 
 
