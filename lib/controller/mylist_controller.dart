@@ -18,8 +18,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:location/location.dart';
 
 
-class HomeController extends GetxController {
-
+class MyListController extends GetxController {
   TextEditingController searchController = new TextEditingController();
 
   var businessModel = BusinessModel().obs;
@@ -41,8 +40,6 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     getTags();
-
-    getLocation();
 
   }
 
@@ -69,15 +66,9 @@ class HomeController extends GetxController {
       params["tags"] = filteredTagId;
     }
 
-    if(UserPreferences().get(UserPreferences.SHARED_USER_ID) != null){
-      params["user_id"] = UserPreferences().get(UserPreferences.SHARED_USER_ID);
-    }
-
-    HomeRepo().getBusinessList(params).then((value) {
-      if (value != null && value.data != null ) {
+    HomeRepo().getMyList(params).then((value) {
+      if (value != null && value.data != null) {
         businessModel.value = value;
-
-        UserPreferences().saveData(UserPreferences.SHARED_USER_PREMIUM, value.premium.toString());
 
       } else {
 
@@ -216,43 +207,5 @@ class HomeController extends GetxController {
       throw 'Could not launch $url';
     }
   }
-
-  void getLocation() async {
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return;
-      }
-    }
-
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
-
-    _position = await location.getLocation();
-
-    print("Check User location ${_position.latitude} : ${_position.longitude}");
-
-    // From coordinates
-    final coordinates = new Coordinates(_position.latitude, _position.longitude);
-    List<Address> addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    var first = addresses.first;
-    print("${first.locality}");
-
-    userCity = first.locality ?? "";
-    userState = first.adminArea ?? "";
-    userPostalCode = first.postalCode ?? "";
-
-    selectedCity = userCity;
-
-    getBusinessList();
-
-  }
-
 
 }

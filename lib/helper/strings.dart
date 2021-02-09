@@ -14,6 +14,8 @@ class Strings{
   static const paytm_link  = 'https://paytm.com/electricity-bill-payment';
   static const website_url  = 'http://www.peselectrical.org/';
 
+  static const country_code  = '+91';
+
   static String formatDateNew(String date){
     print("Checking date --- ${date}");
     final DateFormat oldDateFormat = DateFormat('dd/MM/yyyy');

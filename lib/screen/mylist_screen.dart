@@ -1,4 +1,5 @@
 import 'package:dhanda/controller/home_controller.dart';
+import 'package:dhanda/controller/mylist_controller.dart';
 import 'package:dhanda/helper/config.dart';
 import 'package:dhanda/helper/shared_prefs.dart';
 import 'package:dhanda/screen/business_details_screen.dart';
@@ -11,11 +12,12 @@ import 'package:get/get.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:social_share/social_share.dart';
 
-class HomeScreen extends StatelessWidget {
-  final controller = Get.find<HomeController>();
+class MyListScreen extends StatelessWidget {
+  final controller = Get.find<MyListController>();
 
   @override
   Widget build(BuildContext context) {
+    controller.getBusinessList();
     return Container(
       color: Get.theme.primaryColor,
       child: Stack(
@@ -256,92 +258,6 @@ class HomeScreen extends StatelessWidget {
                                 controller.businessModel.value.data.length,
                           ),
 
-
-                          UserPreferences().get(UserPreferences.SHARED_USER_ID) == null
-                              ?
-
-                              //Login suggestion card
-                              InkWell(
-                                  onTap: () {
-                                    Get.toNamed("login");
-                                  },
-                                  child: Container(
-                                    width: Get.width,
-                                    margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                                    padding:
-                                        EdgeInsets.fromLTRB(20, 20, 20, 20),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        color: Colors.white),
-                                    child: Center(
-                                      child: Text(
-                                        'loginSuggestion'.tr,
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            letterSpacing: 1.0,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              :
-                              //Referral card
-                              InkWell(
-                                  onTap: () {
-                                    SocialShare.shareOptions(UserPreferences()
-                                            .get(UserPreferences
-                                                .SHARED_USER_REFERRAL) ??
-                                        "");
-                                  },
-                                  child: Container(
-                                    width: Get.width,
-                                    margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                                    padding:
-                                        EdgeInsets.fromLTRB(20, 20, 20, 20),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        color: Colors.white),
-                                    child: Center(
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            'referSuggTitle'.tr,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                letterSpacing: 1.0,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          SizedBox(
-                                            height: 20,
-                                          ),
-                                          Text(
-                                            '${'yourReferralCode'.tr}',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                letterSpacing: 1.0,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            UserPreferences().get(UserPreferences
-                                                    .SHARED_USER_REFERRAL) ??
-                                                "",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                letterSpacing: 1.0,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )
                         ],
                       ),
                     )
@@ -355,7 +271,8 @@ class HomeScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600),
                       ),
                     )
-              : LoadingWidget()),
+              : LoadingWidget()
+          ),
 
           Container(
             margin: EdgeInsets.fromLTRB(15, 10, 15, 15),

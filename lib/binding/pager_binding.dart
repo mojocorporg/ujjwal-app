@@ -1,5 +1,6 @@
 
 import 'package:dhanda/controller/home_controller.dart';
+import 'package:dhanda/controller/mylist_controller.dart';
 import 'package:dhanda/controller/pager_controller.dart';
 import 'package:dhanda/controller/setting_controller.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ class PagerBinding implements Bindings{
   void dependencies() {
     Get.lazyPut(() => PagerController());
     Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => MyListController());
     Get.lazyPut(() => SettingController());
   }
 

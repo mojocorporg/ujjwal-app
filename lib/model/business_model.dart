@@ -1,15 +1,19 @@
-import 'package:get/get.dart';
 class BusinessModel {
+  bool _premium;
   List<Data> _data;
 
+  bool get premium => _premium;
   List<Data> get data => _data;
 
   BusinessModel({
+      bool premium, 
       List<Data> data}){
+    _premium = premium;
     _data = data;
 }
 
   BusinessModel.fromJson(dynamic json) {
+    _premium = json["premium"];
     if (json["data"] != null) {
       _data = [];
       json["data"].forEach((v) {
@@ -20,6 +24,7 @@ class BusinessModel {
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
+    map["premium"] = _premium;
     if (_data != null) {
       map["data"] = _data.map((v) => v.toJson()).toList();
     }
@@ -127,25 +132,15 @@ class Data {
 class Reviews {
   int _id;
   String _name;
-  var _isSelected = 0.obs;
 
   int get id => _id;
   String get name => _name;
-  int get isSelected => _isSelected.value;
-
-
-  set isSelected(value) {
-    _isSelected.value = value;
-  }
 
   Reviews({
       int id, 
-      String name,
-      var isSelected,
-  }){
+      String name}){
     _id = id;
     _name = name;
-    _isSelected = isSelected;
 }
 
   Reviews.fromJson(dynamic json) {

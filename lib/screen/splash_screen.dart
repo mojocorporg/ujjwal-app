@@ -13,13 +13,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    UserPreferences().saveData(UserPreferences.SHARED_USER_TOKEN, "1|t3zOjRDyNQbnmXLLqWQl4kgp26BmvBjgZ7ICkFMH");
-
     Future.delayed(Duration(seconds: 3), () {
       Get.offNamedUntil("/pager", (route) => false);
+//      Get.offNamedUntil("/login", (route) => false);
     });
-
-
 
   }
 

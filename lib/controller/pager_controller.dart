@@ -1,4 +1,5 @@
 import 'package:dhanda/screen/home_screen.dart';
+import 'package:dhanda/screen/mylist_screen.dart';
 import 'package:dhanda/screen/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
@@ -9,7 +10,7 @@ import 'package:get/get.dart';
 class PagerController extends GetxController{
 
   PageController pageController = PageController(initialPage: 0);
-  List<Widget> screens = [HomeScreen(),HomeScreen(),SettingScreen()];
+  List<Widget> screens = [HomeScreen(),MyListScreen(),SettingScreen()];
   var currentPage = 0.obs;
 
   @override

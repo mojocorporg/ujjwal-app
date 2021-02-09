@@ -13,6 +13,10 @@ class UserPreferences {
   static const String SHARED_VENDOR_ID = "sharedVendorId";
   static const String SHARED_METER_ID = "sharedMeterId";
   static const String SHARED_REPORT_IMAGE = "sharedReportImage";
+  static const String SHARED_USER_NUMBER = "sharedUserNumber";
+  static const String SHARED_USER_ID = "sharedUserId";
+  static const String SHARED_USER_PREMIUM = "sharedUserPremium";
+  static const String SHARED_USER_REFERRAL = "sharedUserReferral";
 
   static final UserPreferences _instance = UserPreferences._constructor();
 

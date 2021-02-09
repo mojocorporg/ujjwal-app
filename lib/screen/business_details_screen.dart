@@ -180,21 +180,26 @@ class BusinessDetailScreen extends StatelessWidget {
 
                     Expanded(
                       flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
-                        padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Get.theme.primaryColor
-                        ),
-                        child: Center(
-                          child: Text('no'.tr,
-                            style: TextStyle(
-                                color: Colors.white,
-                                letterSpacing: 1.0,
-                                fontFamily: 'Roboto',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600
+                      child: InkWell(
+                        onTap: (){
+                          controller.addRemoveCard("0");
+                        },
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                          padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              color: Get.theme.primaryColor
+                          ),
+                          child: Center(
+                            child: Text('no'.tr,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1.0,
+                                  fontFamily: 'Roboto',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600
+                              ),
                             ),
                           ),
                         ),
@@ -202,21 +207,26 @@ class BusinessDetailScreen extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
-                        padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Get.theme.primaryColor
-                        ),
-                        child: Center(
-                          child: Text('yes'.tr,
-                            style: TextStyle(
-                                color: Colors.white,
-                                letterSpacing: 1.0,
-                                fontFamily: 'Roboto',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600
+                      child: InkWell(
+                        onTap: (){
+                          controller.addRemoveCard("1");
+                        },
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+                          padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              color: Get.theme.primaryColor
+                          ),
+                          child: Center(
+                            child: Text('yes'.tr,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1.0,
+                                  fontFamily: 'Roboto',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600
+                              ),
                             ),
                           ),
                         ),

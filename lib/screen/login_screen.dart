@@ -1,10 +1,15 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dhanda/helper/OTPTextField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:dhanda/controller/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
+
+  final controller = Get.find<LoginController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,31 +57,26 @@ class LoginScreen extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: Container(
-                              padding: EdgeInsets.fromLTRB(0, 13, 0, 13),
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/flag.png",
-                                    width: 20,
-                                    height: 20,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    '+91',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        letterSpacing: 0.3,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w800),
-                                  ),
-                                ],
-                              )),
+                              child: CountryCodePicker(
+                                onChanged: (e) =>{
+//                                widget.countryCode(e.dialCode)
+                                  controller.countryCode = e.dialCode
+                                },
+                                initialSelection: 'IN',
+                                showCountryOnly: false,
+                                showOnlyCountryWhenClosed: false,
+                                favorite: ['+91', 'IN'],
+                                showFlag: false,
+                                boxDecoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                                    color: Colors.white
+                                ),
+                              )
+                          ),
                         ),
                         SizedBox(
                           width: 10,
@@ -89,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
                             child: TextField(
+                              controller: controller.phoneController,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -118,7 +119,7 @@ class LoginScreen extends StatelessWidget {
                       height: 20,
                     ),
                     OTPTextField(
-                      length: 5,
+                      length: 6,
                       width: MediaQuery.of(context).size.width,
                       textFieldAlignment: MainAxisAlignment.spaceAround,
                       fieldWidth: 50,
@@ -128,6 +129,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       onCompleted: (pin) {
                         print("Completed: " + pin);
+                        controller.verifyOtp(pin);
                       },
                     ),
                     SizedBox(
@@ -136,7 +138,9 @@ class LoginScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.center,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          controller.getOtp();
+                        },
                         child: Text(
                           'resentOtp'.tr,
                           style: TextStyle(
@@ -149,9 +153,13 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 30,),
-                    InkWell(
+                    Obx(()=>InkWell(
                       onTap: () {
+                        if(controller.codeSend.value){
 
+                        }else{
+                          controller.getOtp();
+                        }
                       },
                       child: Container(
                         height: 45,
@@ -167,31 +175,31 @@ class LoginScreen extends StatelessWidget {
                         ),
                         child: Align(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Visibility(
-                              visible: true,
-                              child: Text("login".tr,
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.35,
-                                    letterSpacing: 0.8,
-                                  )),
-                            ),
-                            Visibility(
-                              visible: false,
-                              child: SizedBox(
-                                  height: 80,
-                                  width: 80,
-                                  child: Lottie.asset(
-                                      'assets/images/loader.json')),
-                            ),
-                          ],
-                        )),
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Visibility(
+                                  visible: controller.loginClicked.value ? false : true,
+                                  child: Text(controller.codeSend.value ? "verifyOtp".tr :  "getOtp".tr,
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700,
+                                        height: 1.35,
+                                        letterSpacing: 0.8,
+                                      )),
+                                ),
+                                Visibility(
+                                  visible: controller.loginClicked.value ? true : false,
+                                  child: SizedBox(
+                                      height: 80,
+                                      width: 80,
+                                      child: Lottie.asset(
+                                          'assets/images/loader.json')),
+                                ),
+                              ],
+                            )),
                       ),
-                    ),
+                    )),
                   ],
                 ),
               )

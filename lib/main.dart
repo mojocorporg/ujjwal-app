@@ -9,6 +9,8 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_core/firebase_core.dart';
+
 
 import 'helper/routes.dart';
 import 'helper/shared_prefs.dart';
@@ -44,6 +46,8 @@ int notiId = 0;
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+
   UserPreferences().init();
 
   runApp(

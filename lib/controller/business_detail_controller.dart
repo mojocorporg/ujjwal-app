@@ -1,3 +1,4 @@
+import 'package:dhanda/helper/config.dart';
 import 'package:dhanda/model/business_model.dart';
 import 'package:dhanda/repository/home_repo.dart';
 import 'package:dhanda/model/review_tag_model.dart' as reviewModel;
@@ -85,6 +86,21 @@ class BusinessDetailController extends GetxController{
       } else {
 
       }
+    });
+  }
+
+  void addRemoveCard(String status){
+    Map<String,String> params = {
+      "status" :status,
+    };
+    HomeRepo().addRemoveCard(params,cardData.id.toString()).then((value) {
+
+      if(value.status){
+        Config().displaySnackBar(value.message, "");
+      }else{
+        Config().displaySnackBar(value.message, "");
+      }
+
     });
   }
 

@@ -4,17 +4,16 @@ import 'dart:io';
 import 'package:dhanda/helper/api_urls.dart';
 import 'package:dhanda/helper/shared_prefs.dart';
 import 'package:dhanda/model/business_model.dart';
+import 'package:dhanda/model/return_model.dart';
 import 'package:dhanda/model/review_tag_model.dart';
 import 'package:dhanda/model/tag_model.dart';
 import 'package:dio/dio.dart';
-
-
 
 class HomeRepo {
 
   Future<BusinessModel> getBusinessList(params) async {
     print("Business list params --- ${params}");
-    String url = UserPreferences().getBearerToken() != null ? ApiUrls.businessesListWithLogin  : ApiUrls.businessesListWithoutLogin;
+    String url = ApiUrls.businessesList;
     var dio = Dio();
     Response response = await dio.get(
         url,
@@ -26,6 +25,23 @@ class HomeRepo {
     );
     BusinessModel businessModel = BusinessModel.fromJson(jsonDecode(response.toString()));
     print('API RESPONSE BUSINESS LIST : ${response.toString()}');
+    return businessModel;
+  }
+
+  Future<BusinessModel> getMyList(params) async {
+    print("My list params --- ${params}");
+    String url = ApiUrls.myList;
+    var dio = Dio();
+    Response response = await dio.get(
+        url,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.authorizationHeader: UserPreferences().getBearerToken(),
+      }),
+      queryParameters: params
+    );
+    BusinessModel businessModel = BusinessModel.fromJson(jsonDecode(response.toString()));
+    print('API RESPONSE MY LIST : ${response.toString()}');
     return businessModel;
   }
 
@@ -98,6 +114,22 @@ class HomeRepo {
     ReviewTagModel tagModel = ReviewTagModel.fromJson(jsonDecode(response.toString()));
     print('API RESPONSE POST SHARE : ${response.toString()}');
     return tagModel;
+  }
+
+  Future<ReturnModel> addRemoveCard(params,id) async {
+    var dio = Dio();
+    Response response = await dio.post(
+      ApiUrls.BASE_URL+"/business/${id}/add_to_my_list",
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.authorizationHeader: UserPreferences().getBearerToken(),
+      }),
+      data: params
+    );
+    ReturnModel returnModel = ReturnModel.fromJson(jsonDecode(response.toString()));
+    print('API RESPONSE ADD REMOVE : ${response.toString()}');
+    return returnModel;
   }
 
 }

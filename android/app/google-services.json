@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "255846371539",
+    "project_id": "dhanda-a6a6e",
+    "storage_bucket": "dhanda-a6a6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255846371539:android:dcda0970be414065420426",
+        "android_client_info": {
+          "package_name": "com.ujjwal.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255846371539-ejujajmo3o503sg076kta3bbh2g9qii6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ujjwal.app",
+            "certificate_hash": "881beb7a5769b1b17e02e0b187e3259a71cfca9c"
+          }
+        },
+        {
+          "client_id": "255846371539-n5im43hjagi7gr108a849fl7234645j6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyRl9ino9xRq9ZlAoo4NJuJJoIiCe_Cbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255846371539-n5im43hjagi7gr108a849fl7234645j6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255846371539-2ausub01deui1n8admvb533p9qb02ua7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dhanda.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
