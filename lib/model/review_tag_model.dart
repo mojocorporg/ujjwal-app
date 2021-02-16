@@ -35,7 +35,7 @@ class Data {
 
   int get id => _id;
   String get name => _name;
-  int get isSelected => _isSelected.value;
+  int get  isSelected => _isSelected.value;
 
 
   set isSelected(value) {

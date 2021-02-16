@@ -1,9 +1,11 @@
 
 import 'package:dhanda/binding/business_detail_binding.dart';
+import 'package:dhanda/binding/on_boarding_binding.dart';
 import 'package:dhanda/binding/pager_binding.dart';
 import 'package:dhanda/binding/login_binding.dart';
 import 'package:dhanda/screen/business_details_screen.dart';
 import 'package:dhanda/screen/login_screen.dart';
+import 'package:dhanda/screen/on_boarding_screen.dart';
 import 'package:dhanda/screen/pager_screen.dart';
 import 'package:dhanda/screen/splash_screen.dart';
 import 'package:dhanda/screen/referral_screen.dart';
@@ -35,6 +37,12 @@ class Routes {
       name: '/referral',
       page: () => ReferralScreen(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: '/onBoarding',
+      page: () => OnBoardingScreen(),
+      binding: OnBoardingBinding(),
+
     ),
 
   ];

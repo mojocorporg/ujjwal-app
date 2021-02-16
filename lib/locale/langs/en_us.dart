@@ -29,4 +29,12 @@ const Map<String, String> enUS = {
   "yourReferralCode" : "Your Referral Code",
   "noData" : "No Data Found",
   "searchLocation" : "Search Location",
+  "setting" : "Settings",
+  "userName" : "User Name",
+  "trialAccount" : "Trail Account",
+  "pay" : "Pay",
+  "privacyPolicy" : "Privacy Policy",
+  "tos" : "TOS",
+  "logout" : "Logout",
+  "next" : "Next",
 };

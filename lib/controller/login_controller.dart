@@ -46,9 +46,11 @@ class LoginController extends GetxController{
     print("Checking phone number -- ${phoneNo}");
 
     final PhoneVerificationCompleted verificationCompleted = (AuthCredential authResult){
+      loginClicked.value = false;
       print("Number Verified ${authResult.providerId}");
       UserPreferences().saveData(UserPreferences.SHARED_USER_NUMBER, phoneNo);
-//      Get.off(HomeScreen());
+      UserPreferences().saveData(UserPreferences.SHARED_USER_NUMBER_TWO, phoneController.text);
+      UserPreferences().saveData(UserPreferences.SHARED_COUNTRY_CODE, countryCode);
         Get.toNamed("/referral");
     };
 
@@ -138,7 +140,7 @@ class LoginController extends GetxController{
             UserPreferences().saveData(UserPreferences.SHARED_USER_ID, value.userId.toString());
             UserPreferences().saveData(UserPreferences.SHARED_USER_REFERRAL, value.referralCode.toString());
 
-            Get.offNamed("pager");
+            Get.offNamedUntil("pager", (route) => false);
 
           }else{
             Config().displaySnackBar(value.message, "");

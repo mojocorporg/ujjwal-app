@@ -8,5 +8,6 @@ class ApiUrls{
   static const getReviews = BASE_URL+"/reviews";
   static const login = BASE_URL+"/login";
   static const myList = BASE_URL+"/businesses/my_list";
+  static const updateName = BASE_URL+"/update_name";
 
 }

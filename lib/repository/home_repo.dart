@@ -132,4 +132,20 @@ class HomeRepo {
     return returnModel;
   }
 
+  Future<ReturnModel> updateName(params) async {
+    var dio = Dio();
+    Response response = await dio.post(
+      ApiUrls.updateName,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.authorizationHeader: UserPreferences().getBearerToken(),
+      }),
+      data: params
+    );
+    ReturnModel returnModel = ReturnModel.fromJson(jsonDecode(response.toString()));
+    print('API RESPONSE UPDATE NAME : ${response.toString()}');
+    return returnModel;
+  }
+
 }
