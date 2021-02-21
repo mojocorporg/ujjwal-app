@@ -1,4 +1,5 @@
 import 'package:dhanda/controller/business_detail_controller.dart';
+import 'package:dhanda/helper/shared_prefs.dart';
 import 'package:dhanda/widget/CardDetailItemWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +18,18 @@ class BusinessDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Get.theme.primaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-            color: Colors.black
-        ),
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+              color: Colors.black
+          ),
+          title: Text('businessDetails'.tr,
+            style: TextStyle(
+                color: Colors.black,
+                letterSpacing: 1.0,
+                fontSize: 16,
+                fontWeight: FontWeight.w600
+            ),
+          ),
       ),
       body: Stack(
         children: [
@@ -60,8 +69,11 @@ class BusinessDetailScreen extends StatelessWidget {
                     Screenshot(
                       controller: controller.screenshotController,
                       child: Container(
-                        color: Colors.white,
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -69,7 +81,7 @@ class BusinessDetailScreen extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerRight,
                               child: Container(
-                                margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
                                 child: Container(
                                   height: 50,
                                   child: Image.asset(
@@ -116,19 +128,26 @@ class BusinessDetailScreen extends StatelessWidget {
 
 
                 Obx(() =>
-                controller.reviewList != null && controller.reviewList.length > 0 ?
+                controller.reviewList != null &&
+                    controller.reviewList.length > 0 ?
                 Container(
                   child: Wrap(
                     children: controller.reviewList.map((e) {
                       return InkWell(
                         onTap: () {
-                          controller.selectReviewTag(e);
+                          if (UserPreferences().get(
+                              UserPreferences.SHARED_USER_TOKEN) != null) {
+                            controller.selectReviewTag(e);
+                          } else {
+                            Get.toNamed("login");
+                          }
                         },
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                          margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
                           padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
                           decoration: BoxDecoration(
-                              color: e.isSelected == 1 ? Colors.red[400] : Get.theme
+                              color: e.isSelected == 1 ? Colors.red[400] : Get
+                                  .theme
                                   .primaryColor,
                               borderRadius: BorderRadius.circular(5)
                           ),
@@ -181,14 +200,20 @@ class BusinessDetailScreen extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: InkWell(
-                        onTap: (){
-                          controller.addRemoveCard("0");
+                        onTap: () {
+                          if (UserPreferences().get(UserPreferences
+                              .SHARED_USER_TOKEN) != null) {
+                            controller.addRemoveCard("0");
+                          } else {
+                            Get.toNamed("login");
+                          }
                         },
                         child: Container(
                           margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
                           padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)),
                               color: Get.theme.primaryColor
                           ),
                           child: Center(
@@ -208,14 +233,20 @@ class BusinessDetailScreen extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: InkWell(
-                        onTap: (){
-                          controller.addRemoveCard("1");
+                        onTap: () {
+                          if (UserPreferences().get(UserPreferences
+                              .SHARED_USER_TOKEN) != null) {
+                            controller.addRemoveCard("1");
+                          } else {
+                            Get.toNamed("login");
+                          }
                         },
                         child: Container(
                           margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
                           padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)),
                               color: Get.theme.primaryColor
                           ),
                           child: Center(
@@ -232,6 +263,8 @@ class BusinessDetailScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+
+
                   ],
                 )
               ],

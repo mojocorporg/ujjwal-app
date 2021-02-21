@@ -12,7 +12,6 @@ import 'package:dio/dio.dart';
 class HomeRepo {
 
   Future<BusinessModel> getBusinessList(params) async {
-    print("Business list params --- ${params}");
     String url = ApiUrls.businessesList;
     var dio = Dio();
     Response response = await dio.get(
