@@ -362,7 +362,9 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: Colors.white),
+                color: Colors.white,
+                boxShadow: [BoxShadow(color: Colors.black,blurRadius: 5)]
+            ),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -422,12 +424,11 @@ class HomeScreen extends StatelessWidget {
                           "true") {
                         controller.openFilterDialog(context);
                       } else {
-                        Config().displaySnackBar(
-                            "buyPremium".tr, "");
+                        Config().displaySnackBar("buyPremium".tr, "");
                       }
                     },
                     child: Icon(
-                      Icons.filter,
+                      Icons.filter_alt,
                       size: 25,
                       color: Colors.grey[600],
                     ),

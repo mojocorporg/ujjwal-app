@@ -17,7 +17,7 @@ class SettingScreen extends StatelessWidget {
               bottom: -30,
               left: -40,
               child: Image.asset(
-                "assets/images/logo.png",
+                "assets/images/dlogo2.png",
                 width: 180,
                 height: 180,
               )),
@@ -48,7 +48,7 @@ class SettingScreen extends StatelessWidget {
           ),
           UserPreferences().get(UserPreferences.SHARED_USER_ID) == null
               ? _buildButton('login'.tr,(){Get.toNamed("login");})
-              : Obx(()=>_basicDetailField())
+              : Obx(()=>_basicDetailField(context))
         ],
       ),
     );
@@ -82,7 +82,7 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
-  Widget _basicDetailField() {
+  Widget _basicDetailField(context) {
     return Container(
       child: SingleChildScrollView(
         child: Column(
@@ -208,9 +208,8 @@ class SettingScreen extends StatelessWidget {
             _buildContainer(Icons.insert_drive_file,'tos'.tr),
 
             _buildButton('logout'.tr,(){
-              UserPreferences().getStorage.erase();
-              Get.toNamed("login");
-            })
+              controller.logoutConfirmation(context);
+              })
           ],
         ),
       ),

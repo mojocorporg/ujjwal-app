@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:dhanda/helper/config.dart';
 import 'package:dhanda/helper/strings.dart';
 import 'package:dhanda/screen/home_screen.dart';

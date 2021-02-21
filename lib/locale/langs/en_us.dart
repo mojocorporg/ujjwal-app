@@ -4,7 +4,7 @@ const Map<String, String> enUS = {
   "enterNo" : "Enter Mobile Number",
   "enterOtp" : "Enter OTP...",
   "enterOtpTitle" : "Enter OTP",
-  "resentOtp" : "Resent OTP",
+  "resentOtp" : "Resend OTP",
   "login" : "Log In",
   "selectLocation" : "Select Location",
   "call" : "Call",
@@ -37,4 +37,5 @@ const Map<String, String> enUS = {
   "tos" : "TOS",
   "logout" : "Logout",
   "next" : "Next",
+  "businessDetails" : "Business Details",
 };

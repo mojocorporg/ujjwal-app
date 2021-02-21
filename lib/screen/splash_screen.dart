@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(milliseconds: 1500), () {
       if(UserPreferences().get(UserPreferences.SHARED_ONBOARDING) == null){
         Get.offNamedUntil("/onBoarding", (route) => false);
       }else{

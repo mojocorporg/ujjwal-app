@@ -17,7 +17,9 @@ class MyListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.getBusinessList();
+    if(UserPreferences().get(UserPreferences.SHARED_USER_TOKEN) != null){
+      controller.getBusinessList();
+    }
     return Container(
       color: Get.theme.primaryColor,
       child: Stack(
@@ -35,6 +37,8 @@ class MyListScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             color: Get.theme.primaryColor.withOpacity(0.5),
           ),
+
+          UserPreferences().get(UserPreferences.SHARED_USER_TOKEN) != null ?
 
           Obx(() => controller.businessModel.value != null &&
                   controller.businessModel.value.data != null
@@ -272,7 +276,12 @@ class MyListScreen extends StatelessWidget {
                       ),
                     )
               : LoadingWidget()
-          ),
+          )
+
+          :
+
+        _buildButton('login'.tr,(){Get.toNamed("login");}),
+
 
           Container(
             margin: EdgeInsets.fromLTRB(15, 10, 15, 15),
@@ -344,7 +353,7 @@ class MyListScreen extends StatelessWidget {
                       }
                     },
                     child: Icon(
-                      Icons.filter,
+                      Icons.filter_alt,
                       size: 25,
                       color: Colors.grey[600],
                     ),
@@ -358,4 +367,34 @@ class MyListScreen extends StatelessWidget {
       ),
     );
   }
+
+
+  Widget _buildButton(String name,Function function) {
+    return Center(
+      child: InkWell(
+        onTap: function,
+        child: Container(
+          width: Get.width,
+          height: 50,
+          margin: EdgeInsets.fromLTRB(50, 30, 50, 30),
+          padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              color: Colors.white),
+          child: Center(
+            child: Text(
+              name,
+              style: TextStyle(
+                  color: Colors.black,
+                  letterSpacing: 1.0,
+                  fontFamily: 'Roboto',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
 }

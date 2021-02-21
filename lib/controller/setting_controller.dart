@@ -4,6 +4,7 @@ import 'package:dhanda/repository/home_repo.dart';
 import 'package:dhanda/screen/home_screen.dart';
 import 'package:dhanda/screen/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/get.dart';
 
@@ -42,6 +43,47 @@ class SettingController extends GetxController{
         UserPreferences().saveData(UserPreferences.SHARED_USER_NAME, nameController.text);
       }
     });
+  }
+
+
+  logoutConfirmation(BuildContext context) {
+
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Cancel"),
+      onPressed:  () {
+        Get.back();
+      },
+    );
+    Widget continueButton = FlatButton(
+      child: Text("Logout"),
+      onPressed:  () {
+        UserPreferences().saveData(UserPreferences.SHARED_USER_TOKEN, null);
+        UserPreferences().saveData(UserPreferences.SHARED_USER_ID, null);
+        UserPreferences().saveData(UserPreferences.SHARED_USER_REFERRAL, null);
+
+        Get.toNamed("login");
+
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Logout"),
+      content: Text("Are you sure you want to logout?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
 

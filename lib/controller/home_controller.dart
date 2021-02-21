@@ -17,7 +17,6 @@ import 'package:social_share/social_share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:location/location.dart';
 
-
 class HomeController extends GetxController {
 
   TextEditingController searchController = new TextEditingController();
@@ -139,7 +138,9 @@ class HomeController extends GetxController {
                     }
                   }
                 }
-                filteredTagId = filteredTagId.substring(0,filteredTagId.length-1);
+                if(filteredTagId.length > 0){
+                  filteredTagId = filteredTagId.substring(0,filteredTagId.length-1);
+                }
               }
               print(filteredTagId);
               Get.back();
