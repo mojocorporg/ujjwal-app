@@ -121,6 +121,8 @@ class LoginController extends GetxController{
         "notification_token" : token,
       };
 
+      print("Checking token --- ${token}");
+
       if(!isSkip){
         if(referralController.text.length > 0){
           if(referralController.text.length == 6){
