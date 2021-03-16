@@ -48,6 +48,7 @@ dependencies:
   geolocator: ^5.3.2+2
   location: ^3.0.0
   carousel_slider: ^2.3.1
+  razorpay_flutter: ^1.2.2
 
 
 

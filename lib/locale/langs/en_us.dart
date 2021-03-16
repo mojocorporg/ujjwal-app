@@ -38,4 +38,8 @@ const Map<String, String> enUS = {
   "logout" : "Logout",
   "next" : "Next",
   "businessDetails" : "Business Details",
+  "price" : "Price",
+  "newContacts" : "New Contacts",
+  "buy" : "BUY",
+  "packages" : "Packages",
 };

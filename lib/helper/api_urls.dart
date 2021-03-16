@@ -9,5 +9,8 @@ class ApiUrls{
   static const login = BASE_URL+"/login";
   static const myList = BASE_URL+"/businesses/my_list";
   static const updateName = BASE_URL+"/update_name";
+  static const package = BASE_URL+"/package";
+  static const getOrderId = BASE_URL+"/order";
+  static const paymentVerification = BASE_URL+"/verify/payment";
 
 }

@@ -17,6 +17,9 @@ class Config {
   static const ORANGE_COLOR_600 =  Color(0xFFcc8e44);
   static const ORANGE_COLOR_2 =  Color(0xFFf7944b);
 
+  static const String RAZORPAY_LIVE_KEY = "rzp_test_YXXaZxx7bhWppJ";
+  static const String RAZORPAY_TEST_KEY = "rzp_test_YXXaZxx7bhWppJ";
+
 //  static const String user_token = "Bearer fmc89GCBJZNJRVp7VR0coie5vAm2";
 
 

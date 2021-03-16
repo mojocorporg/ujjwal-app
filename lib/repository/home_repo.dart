@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:dhanda/helper/api_urls.dart';
 import 'package:dhanda/helper/shared_prefs.dart';
 import 'package:dhanda/model/business_model.dart';
+import 'package:dhanda/model/order_response_model.dart';
+import 'package:dhanda/model/payment_package_model.dart';
 import 'package:dhanda/model/return_model.dart';
 import 'package:dhanda/model/review_tag_model.dart';
 import 'package:dhanda/model/tag_model.dart';
@@ -145,6 +147,52 @@ class HomeRepo {
     ReturnModel returnModel = ReturnModel.fromJson(jsonDecode(response.toString()));
     print('API RESPONSE UPDATE NAME : ${response.toString()}');
     return returnModel;
+  }
+
+  Future<PaymentPackageModel> getPackage() async {
+    var dio = Dio();
+    Response response = await dio.get(
+      ApiUrls.package,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.authorizationHeader: UserPreferences().getBearerToken(),
+      }),
+    );
+    PaymentPackageModel data = PaymentPackageModel.fromJson(jsonDecode(response.toString()));
+    print('API RESPONSE PACKAGE  : ${response.toString()}');
+    return data;
+  }
+
+  Future<OrderResponseModel> getOrderId() async {
+    var dio = Dio();
+    Response response = await dio.post(
+      ApiUrls.getOrderId,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.authorizationHeader: UserPreferences().getBearerToken(),
+      }),
+    );
+    OrderResponseModel data = OrderResponseModel.fromJson(jsonDecode(response.toString()));
+    print('API RESPONSE ORDER   : ${response.toString()}');
+    return data;
+  }
+
+  Future<ReturnModel> verifyPayment(params) async {
+    var dio = Dio();
+    Response response = await dio.post(
+      ApiUrls.paymentVerification,
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.authorizationHeader: UserPreferences().getBearerToken(),
+      }),
+      data: params
+    );
+    ReturnModel data = ReturnModel.fromJson(jsonDecode(response.toString()));
+    print('API RESPONSE ORDER   : ${response.toString()}');
+    return data;
   }
 
 }

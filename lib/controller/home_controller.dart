@@ -24,6 +24,8 @@ class HomeController extends GetxController {
   var businessModel = BusinessModel().obs;
   var tagList = List<tagModel.Data>().obs;
 
+  List<String> selectedTagList = [];
+
   LocationData _position;
   bool _serviceEnabled;
   Location location = new Location();
@@ -128,9 +130,13 @@ class HomeController extends GetxController {
             applyButonTextBackgroundColor: Get.theme.primaryColor,
             selectedTextBackgroundColor: Get.theme.primaryColor,
             hideheaderText: true,
+            selectedTextList: selectedTagList,
             onApplyButtonClick: (list) {
+              FocusScope.of(context).unfocus();
               filteredTagId = "";
+              selectedTagList.clear();
               if (list != null) {
+                selectedTagList.addAll(list);
                 for(int i=0;i<tagList.length;i++){
                   for(int j=0;j<list.length;j++){
                     if(list[j] == tagList[i].name){
