@@ -103,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: "enterOtp".tr,
+                                      hintText: "enterNo".tr,
                                       counterText: ''),
                                   style: TextStyle(
                                       fontSize: 16,
@@ -222,7 +222,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: (){
-                      Get.back();
+                      Get.offNamedUntil("/pager", (route) => false);
                     },
                     child: Container(
                         padding: EdgeInsets.fromLTRB(20, 20, 20, 20),

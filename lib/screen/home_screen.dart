@@ -1,4 +1,5 @@
 import 'package:dhanda/controller/home_controller.dart';
+import 'package:dhanda/helper/app_colors.dart';
 import 'package:dhanda/helper/config.dart';
 import 'package:dhanda/helper/shared_prefs.dart';
 import 'package:dhanda/screen/business_details_screen.dart';
@@ -274,14 +275,40 @@ class HomeScreen extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(5),
                                         color: Colors.white),
                                     child: Center(
-                                      child: Text(
-                                        'loginSuggestion'.tr,
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            letterSpacing: 1.0,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
+                                      child:Column(
+                                        children: [
+
+                                          Text(
+                                            'loginSuggestion'.tr,
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                letterSpacing: 1.0,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+
+                                          SizedBox(height: 10,),
+
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(Radius.circular(30)),
+                                                color: AppColors.secondaryColor
+                                            ),
+                                            child:  Text('LOGIN NOW',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  letterSpacing: 1.6,
+                                                  fontFamily: 'Roboto',
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600
+                                              ),
+                                            ),
+                                          ),
+
+                                        ],
+                                      )
                                     ),
                                   ),
                                 )
@@ -289,10 +316,7 @@ class HomeScreen extends StatelessWidget {
                               //Referral card
                               InkWell(
                                   onTap: () {
-                                    SocialShare.shareOptions(UserPreferences()
-                                            .get(UserPreferences
-                                                .SHARED_USER_REFERRAL) ??
-                                        "");
+                                    SocialShare.shareOptions('Download this app to generate business leads. Use my referral code to get 5 free leads ${UserPreferences().get(UserPreferences.SHARED_USER_REFERRAL)}');
                                   },
                                   child: Container(
                                     width: Get.width,
@@ -307,6 +331,7 @@ class HomeScreen extends StatelessWidget {
                                         children: [
                                           Text(
                                             'referSuggTitle'.tr,
+                                            textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 letterSpacing: 1.0,
@@ -317,7 +342,8 @@ class HomeScreen extends StatelessWidget {
                                             height: 20,
                                           ),
                                           Text(
-                                            '${'yourReferralCode'.tr}',
+                                            '${'yourReferralCode'.tr} is ${ UserPreferences().get(UserPreferences
+                                                .SHARED_USER_REFERRAL)}',
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 letterSpacing: 1.0,
@@ -327,16 +353,23 @@ class HomeScreen extends StatelessWidget {
                                           SizedBox(
                                             height: 10,
                                           ),
-                                          Text(
-                                            UserPreferences().get(UserPreferences
-                                                    .SHARED_USER_REFERRAL) ??
-                                                "",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                letterSpacing: 1.0,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500),
-                                          ),
+                                         Container(
+                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                                             padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                                             decoration: BoxDecoration(
+                                                               borderRadius: BorderRadius.all(Radius.circular(30)),
+                                                               color: AppColors.secondaryColor
+                                                             ),
+                                           child:  Text('REFER FRIENDS',
+                                             style: TextStyle(
+                                                 color: Colors.white,
+                                                 letterSpacing: 1.6,
+                                                 fontFamily: 'Roboto',
+                                                 fontSize: 14,
+                                                 fontWeight: FontWeight.w600
+                                             ),
+                                           ),
+                                                           ),
                                         ],
                                       ),
                                     ),

@@ -24,7 +24,7 @@ const Map<String, String> enUS = {
   "skip" : "Skip",
   "enterValidReferral" : "Enter Valid Referral Code",
   "buyPremium" : "To use filter featur buy subscription",
-  "loginSuggestion" : "To view more card, LOGIN",
+  "loginSuggestion" : "To view more business listing login with your mobile number",
   "referSuggTitle" : "Refer the app with your friend and view more business card",
   "yourReferralCode" : "Your Referral Code",
   "noData" : "No Data Found",

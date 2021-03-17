@@ -199,10 +199,11 @@ class SettingScreen extends StatelessWidget {
               ),
             ),
 
-            _buildContainer(Icons.person,'trialAccount'.tr),
+//            _buildContainer(Icons.person,'trialAccount'.tr),
 
             InkWell(
               onTap: (){
+
                 controller.openPaymentBS(context);
               },
               child: _buildContainer(Icons.payment,'pay'.tr)

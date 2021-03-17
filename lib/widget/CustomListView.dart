@@ -84,7 +84,19 @@ class _FilterListWidgetState extends State<FilterListWidget> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              widget.hideHeader ? SizedBox() : _header(),
+//              widget.hideHeader ? SizedBox() : _header(),
+               Padding(
+                 padding: const EdgeInsets.all(15.0),
+                 child: Text('Filter Listing',
+                        style: TextStyle(
+                         color: Colors.black,
+                          letterSpacing: 1,
+                            fontFamily: 'Roboto',
+                       fontSize: 16,
+                       fontWeight: FontWeight.w600
+                                           ),
+                                           ),
+               ),
               widget.hideSelectedTextCount
                   ? SizedBox()
                   : Padding(
@@ -94,6 +106,8 @@ class _FilterListWidgetState extends State<FilterListWidget> {
                   style: Theme.of(context).textTheme.caption,
                 ),
               ),
+
+              SizedBox(height: 10,),
               Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 0, bottom: 0, left: 5, right: 5),
@@ -114,7 +128,7 @@ class _FilterListWidgetState extends State<FilterListWidget> {
   Widget _header() {
     return Container(
       decoration: BoxDecoration(
-        color: widget.backgroundColor,
+        color:Colors.grey[100],
         boxShadow: <BoxShadow>[
           BoxShadow(
             offset: Offset(0, 5),
@@ -285,14 +299,14 @@ class _FilterListWidgetState extends State<FilterListWidget> {
                       child: Text(
                         'Reset',
                         style: Theme.of(context).textTheme.headline.copyWith(
-                            fontSize: 20, color: widget.allResetButonColor),
+                            fontSize: 16, color: widget.allResetButonColor),
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
                   MaterialButton(
                     color: widget.applyButonTextBackgroundColor,
-                    padding: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(25))),
                     onPressed: () {
@@ -307,7 +321,7 @@ class _FilterListWidgetState extends State<FilterListWidget> {
                       child: Text(
                         'Apply',
                         style: Theme.of(context).textTheme.headline.copyWith(
-                            fontSize: 20, color: widget.applyButonTextColor),
+                            fontSize: 16, color: widget.applyButonTextColor),
                         textAlign: TextAlign.center,
                       ),
                     ),
