@@ -4,13 +4,19 @@ A new Flutter application.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Install Flutter for your operating system from here
+https://flutter.dev/docs/get-started/install
 
-A few resources to get you started if this is your first Flutter project:
+Install VS Code (https://code.visualstudio.com/download) or Android Studio (https://developer.android.com/studio)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Open the `dhanda` folder in any desired app.
+Open terminal/command prompt and run following commands in the project folder
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`flutter clean`
+`flutter  pub get`
+
+This should the remove any visible errors.
+
+Attach a device or run a simulator and enter below commands to run the app
+`flutter build android`
+`flutter build ios`
