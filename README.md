@@ -15,8 +15,11 @@ Open terminal/command prompt and run following commands in the project folder
 `flutter clean`
 `flutter  pub get`
 
-This should the remove any visible errors.
+This should remove any visible errors.
 
 Attach a device or run a simulator and enter below commands to run the app
 `flutter build android`
 `flutter build ios`
+
+
+This app is using firebase for mobile authentication and push notifications
