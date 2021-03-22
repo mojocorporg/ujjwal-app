@@ -1,6 +1,6 @@
-# dhanda
+# Ujjwal App
 
-A new Flutter application.
+Flutter app for lead generation
 
 ## Getting Started
 
@@ -23,3 +23,8 @@ Attach a device or run a simulator and enter below commands to run the app
 
 
 This app is using firebase for mobile authentication and push notifications
+
+
+# RazorPay Setup
+
+`/libs/helper/config.dart` open this file and replace you live key at line `20`
