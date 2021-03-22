@@ -30,4 +30,4 @@ This app is using firebase for mobile authentication and push notifications
 
 ## RazorPay Setup
 
-`/libs/helper/config.dart` open this file and replace you live key at line `20`
+`/libs/helper/config.dart` open this file and replace your live key at line `20`
