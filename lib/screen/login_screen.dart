@@ -83,8 +83,8 @@ class LoginScreen extends StatelessWidget {
                                     favorite: ['+91', 'IN'],
                                     showFlag: false,
                                     boxDecoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(5)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
                                         color: Colors.white),
                                   )),
                             ),
@@ -132,7 +132,7 @@ class LoginScreen extends StatelessWidget {
                           length: 6,
                           width: MediaQuery.of(context).size.width,
                           textFieldAlignment: MainAxisAlignment.spaceAround,
-                          fieldWidth: 50,
+                          fieldWidth: 40,
                           style: TextStyle(
                             fontSize: 17,
                             color: Colors.white,
@@ -221,7 +221,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.offNamedUntil("/pager", (route) => false);
                     },
                     child: Container(

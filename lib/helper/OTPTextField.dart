@@ -35,15 +35,15 @@ class OTPTextField extends StatefulWidget {
 
   OTPTextField(
       {Key key,
-        this.length = 4,
-        this.width = 10,
-        this.fieldWidth = 30,
-        this.keyboardType = TextInputType.number,
-        this.style = const TextStyle(),
-        this.textFieldAlignment = MainAxisAlignment.spaceBetween,
-        this.obscureText = false,
-        this.onChanged,
-        this.onCompleted})
+      this.length = 4,
+      this.width = 10,
+      this.fieldWidth = 30,
+      this.keyboardType = TextInputType.number,
+      this.style = const TextStyle(),
+      this.textFieldAlignment = MainAxisAlignment.spaceBetween,
+      this.obscureText = false,
+      this.onChanged,
+      this.onCompleted})
       : assert(length > 1);
 
   @override
@@ -115,7 +115,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
         focusNode: _focusNodes[i],
         obscureText: widget.obscureText,
         decoration: InputDecoration(
-            counterText: "",
+          counterText: "",
         ),
         onChanged: (String str) {
           // Check if the current value at this position is empty
@@ -155,9 +155,5 @@ class _OTPTextFieldState extends State<OTPTextField> {
         },
       ),
     );
-
   }
-
-
-
 }
