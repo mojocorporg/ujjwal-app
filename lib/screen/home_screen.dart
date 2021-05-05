@@ -1,10 +1,10 @@
-import 'package:dhanda/controller/home_controller.dart';
-import 'package:dhanda/helper/app_colors.dart';
-import 'package:dhanda/helper/config.dart';
-import 'package:dhanda/helper/shared_prefs.dart';
-import 'package:dhanda/screen/business_details_screen.dart';
-import 'package:dhanda/widget/CardDetailItemWidget.dart';
-import 'package:dhanda/widget/LoadingWidget.dart';
+import 'package:ujjwal/controller/home_controller.dart';
+import 'package:ujjwal/helper/app_colors.dart';
+import 'package:ujjwal/helper/config.dart';
+import 'package:ujjwal/helper/shared_prefs.dart';
+import 'package:ujjwal/screen/business_details_screen.dart';
+import 'package:ujjwal/widget/CardDetailItemWidget.dart';
+import 'package:ujjwal/widget/LoadingWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,14 +34,15 @@ class HomeScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             color: Get.theme.primaryColor.withOpacity(0.5),
           ),
-
           Obx(() => controller.businessModel.value != null &&
                   controller.businessModel.value.data != null
               ? controller.businessModel.value.data.length > 0
                   ? SingleChildScrollView(
                       child: Column(
                         children: [
-                          SizedBox(height: 80,),
+                          SizedBox(
+                            height: 80,
+                          ),
                           ListView.builder(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
@@ -256,9 +257,9 @@ class HomeScreen extends StatelessWidget {
                             itemCount:
                                 controller.businessModel.value.data.length,
                           ),
-
-
-                          UserPreferences().get(UserPreferences.SHARED_USER_ID) == null
+                          UserPreferences()
+                                      .get(UserPreferences.SHARED_USER_ID) ==
+                                  null
                               ?
 
                               //Login suggestion card
@@ -275,48 +276,48 @@ class HomeScreen extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(5),
                                         color: Colors.white),
                                     child: Center(
-                                      child:Column(
-                                        children: [
-
-                                          Text(
-                                            'loginSuggestion'.tr,
+                                        child: Column(
+                                      children: [
+                                        Text(
+                                          'loginSuggestion'.tr,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              letterSpacing: 1.0,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Container(
+                                          margin:
+                                              EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                          padding: EdgeInsets.fromLTRB(
+                                              20, 10, 20, 10),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(30)),
+                                              color: AppColors.secondaryColor),
+                                          child: Text(
+                                            'LOGIN NOW',
                                             style: TextStyle(
-                                                color: Colors.black,
-                                                letterSpacing: 1.0,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500),
+                                                color: Colors.white,
+                                                letterSpacing: 1.6,
+                                                fontFamily: 'Roboto',
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600),
                                           ),
-
-                                          SizedBox(height: 10,),
-
-                                          Container(
-                                            margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(Radius.circular(30)),
-                                                color: AppColors.secondaryColor
-                                            ),
-                                            child:  Text('LOGIN NOW',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  letterSpacing: 1.6,
-                                                  fontFamily: 'Roboto',
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600
-                                              ),
-                                            ),
-                                          ),
-
-                                        ],
-                                      )
-                                    ),
+                                        ),
+                                      ],
+                                    )),
                                   ),
                                 )
                               :
                               //Referral card
                               InkWell(
                                   onTap: () {
-                                    SocialShare.shareOptions('Download this app to generate business leads. Use my referral code to get 5 free leads ${UserPreferences().get(UserPreferences.SHARED_USER_REFERRAL)}');
+                                    SocialShare.shareOptions(
+                                        'Download this app to generate business leads. Use my referral code to get 5 free leads ${UserPreferences().get(UserPreferences.SHARED_USER_REFERRAL)}');
                                   },
                                   child: Container(
                                     width: Get.width,
@@ -342,8 +343,7 @@ class HomeScreen extends StatelessWidget {
                                             height: 20,
                                           ),
                                           Text(
-                                            '${'yourReferralCode'.tr} is ${ UserPreferences().get(UserPreferences
-                                                .SHARED_USER_REFERRAL)}',
+                                            '${'yourReferralCode'.tr} is ${UserPreferences().get(UserPreferences.SHARED_USER_REFERRAL)}',
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 letterSpacing: 1.0,
@@ -353,23 +353,26 @@ class HomeScreen extends StatelessWidget {
                                           SizedBox(
                                             height: 10,
                                           ),
-                                         Container(
-                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                                             padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                                                             decoration: BoxDecoration(
-                                                               borderRadius: BorderRadius.all(Radius.circular(30)),
-                                                               color: AppColors.secondaryColor
-                                                             ),
-                                           child:  Text('REFER FRIENDS',
-                                             style: TextStyle(
-                                                 color: Colors.white,
-                                                 letterSpacing: 1.6,
-                                                 fontFamily: 'Roboto',
-                                                 fontSize: 14,
-                                                 fontWeight: FontWeight.w600
-                                             ),
-                                           ),
-                                                           ),
+                                          Container(
+                                            margin:
+                                                EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                            padding: EdgeInsets.fromLTRB(
+                                                20, 10, 20, 10),
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(30)),
+                                                color:
+                                                    AppColors.secondaryColor),
+                                            child: Text(
+                                              'REFER FRIENDS',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  letterSpacing: 1.6,
+                                                  fontFamily: 'Roboto',
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -389,15 +392,13 @@ class HomeScreen extends StatelessWidget {
                       ),
                     )
               : LoadingWidget()),
-
           Container(
             margin: EdgeInsets.fromLTRB(15, 10, 15, 15),
             padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: Colors.white,
-                boxShadow: [BoxShadow(color: Colors.black,blurRadius: 5)]
-            ),
+                boxShadow: [BoxShadow(color: Colors.black, blurRadius: 5)]),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -429,18 +430,16 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.black,
                           height: 1,
                           fontWeight: FontWeight.normal),
-                      onSubmitted: (value){
+                      onSubmitted: (value) {
                         controller.selectedCity = value;
                         controller.getBusinessList();
 
                         FocusScope.of(context).unfocus();
-
                       },
-                      onChanged: (value){
-                        if(value.length <= 0){
+                      onChanged: (value) {
+                        if (value.length <= 0) {
                           controller.selectedCity = controller.userCity;
                           controller.getBusinessList();
-
                         }
                       },
                     ),
@@ -451,9 +450,8 @@ class HomeScreen extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       if (UserPreferences()
-                          .get(UserPreferences
-                          .SHARED_USER_PREMIUM)
-                          .toLowerCase() ==
+                              .get(UserPreferences.SHARED_USER_PREMIUM)
+                              .toLowerCase() ==
                           "true") {
                         controller.openFilterDialog(context);
                       } else {
@@ -470,7 +468,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-
         ],
       ),
     );

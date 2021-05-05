@@ -1,16 +1,13 @@
-import 'package:dhanda/screen/home_screen.dart';
-import 'package:dhanda/screen/mylist_screen.dart';
-import 'package:dhanda/screen/setting_screen.dart';
+import 'package:ujjwal/screen/home_screen.dart';
+import 'package:ujjwal/screen/mylist_screen.dart';
+import 'package:ujjwal/screen/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/get.dart';
 
-
-
-class PagerController extends GetxController{
-
+class PagerController extends GetxController {
   PageController pageController = PageController(initialPage: 0);
-  List<Widget> screens = [HomeScreen(),MyListScreen(),SettingScreen()];
+  List<Widget> screens = [HomeScreen(), MyListScreen(), SettingScreen()];
   var currentPage = 0.obs;
 
   @override
@@ -18,7 +15,7 @@ class PagerController extends GetxController{
     super.onInit();
   }
 
-  void changePagerScreen(int value){
+  void changePagerScreen(int value) {
     currentPage.value = value;
     pageController.jumpToPage(value);
   }
@@ -27,6 +24,4 @@ class PagerController extends GetxController{
   void onClose() {
     super.onClose();
   }
-
-
 }

@@ -1,4 +1,4 @@
-import 'package:dhanda/helper/shared_prefs.dart';
+import 'package:ujjwal/helper/shared_prefs.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -14,13 +14,12 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(Duration(milliseconds: 1500), () {
-      if(UserPreferences().get(UserPreferences.SHARED_ONBOARDING) == null){
+      if (UserPreferences().get(UserPreferences.SHARED_ONBOARDING) == null) {
         Get.offNamedUntil("/onBoarding", (route) => false);
-      }else{
-       Get.offNamedUntil("/pager", (route) => false);
+      } else {
+        Get.offNamedUntil("/pager", (route) => false);
       }
     });
-
   }
 
   @override

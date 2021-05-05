@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:dhanda/controller/login_controller.dart';
+import 'package:ujjwal/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -132,7 +132,7 @@ class ReferralScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.center,
                       child: InkWell(
-                        onTap: (){
+                        onTap: () {
                           controller.loginUser(true);
                         },
                         child: Padding(
@@ -147,8 +147,6 @@ class ReferralScreen extends StatelessWidget {
                         ),
                       ),
                     )
-
-
                   ],
                 ),
               ),

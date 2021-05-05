@@ -1,4 +1,4 @@
-import 'package:dhanda/model/business_model.dart';
+import 'package:ujjwal/model/business_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -75,17 +75,16 @@ class CardDetailItemWidget extends StatelessWidget {
             ),
             Expanded(
                 child: Row(
-                children: data.phones.map((e){
-                  return Text(
-                    '${e}, ',
-                    style: TextStyle(
-                        color: Colors.grey[400],
-                        letterSpacing: 1.0,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600),
-                  );
-                }).toList()
-            )),
+                    children: data.phones.map((e) {
+              return Text(
+                '${e}, ',
+                style: TextStyle(
+                    color: Colors.grey[400],
+                    letterSpacing: 1.0,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600),
+              );
+            }).toList())),
           ],
         ),
         SizedBox(

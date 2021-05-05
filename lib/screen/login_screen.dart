@@ -1,10 +1,10 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:dhanda/helper/OTPTextField.dart';
+import 'package:ujjwal/helper/OTPTextField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:dhanda/controller/login_controller.dart';
+import 'package:ujjwal/controller/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final controller = Get.find<LoginController>();

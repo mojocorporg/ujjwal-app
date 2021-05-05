@@ -1,5 +1,5 @@
-import 'package:dhanda/controller/setting_controller.dart';
-import 'package:dhanda/model/payment_package_model.dart';
+import 'package:ujjwal/controller/setting_controller.dart';
+import 'package:ujjwal/model/payment_package_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,7 +68,7 @@ class PaymentPackageWidget extends StatelessWidget {
                 Obx(
                   () => InkWell(
                     onTap: () {
-                        controller.getOrderId();
+                      controller.getOrderId();
                     },
                     child: Container(
                       height: 45,

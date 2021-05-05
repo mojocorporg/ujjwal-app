@@ -1,11 +1,11 @@
-import 'package:dhanda/controller/home_controller.dart';
-import 'package:dhanda/helper/config.dart';
-import 'package:dhanda/helper/shared_prefs.dart';
-import 'package:dhanda/model/payment_package_model.dart';
-import 'package:dhanda/repository/home_repo.dart';
-import 'package:dhanda/screen/home_screen.dart';
-import 'package:dhanda/screen/setting_screen.dart';
-import 'package:dhanda/widget/PaymetnPackageWidget.dart';
+import 'package:ujjwal/controller/home_controller.dart';
+import 'package:ujjwal/helper/config.dart';
+import 'package:ujjwal/helper/shared_prefs.dart';
+import 'package:ujjwal/model/payment_package_model.dart';
+import 'package:ujjwal/repository/home_repo.dart';
+import 'package:ujjwal/screen/home_screen.dart';
+import 'package:ujjwal/screen/setting_screen.dart';
+import 'package:ujjwal/widget/PaymetnPackageWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
@@ -99,7 +99,7 @@ class SettingController extends GetxController {
       'key': Config.RAZORPAY_TEST_KEY,
       'amount': amount * 1000,
       //in the smallest currency sub-unit.
-      'name': 'Dhanda',
+      'name': 'ujjwal',
       'order_id': orderId,
       // Generate order_id using Orders API
       'description': '',
@@ -121,14 +121,13 @@ class SettingController extends GetxController {
     HomeRepo().verifyPayment(userData).then((value) {
       packageBtnClick.value = false;
       Get.back();
-      if(value != null && value.status){
+      if (value != null && value.status) {
         Get.find<HomeController>().getLocation();
         Config().displaySnackBar(value.message, "");
-      }else{
+      } else {
         Config().displaySnackBar(value.message, "");
       }
     });
-
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -155,7 +154,10 @@ class SettingController extends GetxController {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return PaymentPackageWidget(paymentPackageModel: paymentPackageModel,controller: this,);
+        return PaymentPackageWidget(
+          paymentPackageModel: paymentPackageModel,
+          controller: this,
+        );
       },
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -166,19 +168,16 @@ class SettingController extends GetxController {
     );
   }
 
-  void getOrderId(){
-
+  void getOrderId() {
     packageBtnClick.value = true;
 
-    HomeRepo().getOrderId().then((value){
-      if(value != null && value.status){
+    HomeRepo().getOrderId().then((value) {
+      if (value != null && value.status) {
         startPayment(value.razorpayOrderId, value.price);
-      }else{
+      } else {
         packageBtnClick.value = false;
         Config().displaySnackBar(value.message, "");
       }
     });
-
   }
-
 }

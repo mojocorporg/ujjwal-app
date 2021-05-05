@@ -1,5 +1,5 @@
-import 'package:dhanda/controller/setting_controller.dart';
-import 'package:dhanda/helper/shared_prefs.dart';
+import 'package:ujjwal/controller/setting_controller.dart';
+import 'package:ujjwal/helper/shared_prefs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +9,6 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       child: Stack(
         children: [
@@ -22,14 +21,8 @@ class SettingScreen extends StatelessWidget {
                 height: 180,
               )),
           Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
-            height: MediaQuery
-                .of(context)
-                .size
-                .height,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             color: Colors.white.withOpacity(0.5),
           ),
           Align(
@@ -47,14 +40,16 @@ class SettingScreen extends StatelessWidget {
             ),
           ),
           UserPreferences().get(UserPreferences.SHARED_USER_ID) == null
-              ? _buildButton('login'.tr,(){Get.toNamed("login");})
-              : Obx(()=>_basicDetailField(context))
+              ? _buildButton('login'.tr, () {
+                  Get.toNamed("login");
+                })
+              : Obx(() => _basicDetailField(context))
         ],
       ),
     );
   }
 
-  Widget _buildButton(String name,Function function) {
+  Widget _buildButton(String name, Function function) {
     return Center(
       child: InkWell(
         onTap: function,
@@ -124,7 +119,7 @@ class SettingScreen extends StatelessWidget {
                                 fontSize: 16,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
-                            onSubmitted: (val){
+                            onSubmitted: (val) {
                               controller.updateName();
                             },
                           ),
@@ -146,7 +141,6 @@ class SettingScreen extends StatelessWidget {
                     flex: 2,
                     child: Card(
                       elevation: 10,
-
                       child: Container(
                         padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
                         decoration: BoxDecoration(
@@ -202,27 +196,25 @@ class SettingScreen extends StatelessWidget {
 //            _buildContainer(Icons.person,'trialAccount'.tr),
 
             InkWell(
-              onTap: (){
+                onTap: () {
+                  controller.openPaymentBS(context);
+                },
+                child: _buildContainer(Icons.payment, 'pay'.tr)),
 
-                controller.openPaymentBS(context);
-              },
-              child: _buildContainer(Icons.payment,'pay'.tr)
-            ),
+            _buildContainer(Icons.verified_user, 'privacyPolicy'.tr),
 
-            _buildContainer(Icons.verified_user,'privacyPolicy'.tr),
+            _buildContainer(Icons.insert_drive_file, 'tos'.tr),
 
-            _buildContainer(Icons.insert_drive_file,'tos'.tr),
-
-            _buildButton('logout'.tr,(){
+            _buildButton('logout'.tr, () {
               controller.logoutConfirmation(context);
-              })
+            })
           ],
         ),
       ),
     );
   }
 
-  Widget _buildContainer(IconData icon,String fieldName){
+  Widget _buildContainer(IconData icon, String fieldName) {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
       decoration: BoxDecoration(
@@ -248,14 +240,14 @@ class SettingScreen extends StatelessWidget {
                   height: 30,
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(fieldName,
+                    child: Text(
+                      fieldName,
                       style: TextStyle(
                           color: Colors.black,
                           letterSpacing: 1.0,
                           fontFamily: 'Roboto',
                           fontSize: 16,
-                          fontWeight: FontWeight.w600
-                      ),
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
