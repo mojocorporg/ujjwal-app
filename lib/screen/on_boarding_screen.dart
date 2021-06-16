@@ -26,7 +26,7 @@ class OnBoardingScreen extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: Colors.black.withOpacity(0.8),
+            color: Colors.white.withOpacity(0.8),
           ),
           Obx(() => Column(
                 mainAxisAlignment: MainAxisAlignment.center,
