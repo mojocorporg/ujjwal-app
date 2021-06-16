@@ -16,7 +16,7 @@ class OnBoardingController extends GetxController {
   List<String> imageList = [
     "assets/images/onboarding1.jpg",
     "assets/images/onboarding2.jpg",
-    "assets/images/logo.png"
+    "assets/images/onboarding3.jpg",
   ];
 
   var currentCarouselIndex = 0.obs;

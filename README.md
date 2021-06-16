@@ -22,7 +22,7 @@ https://github.com/mojocorporg/ujjwal-app.git
 
 **Step 2:**
 
-Open the `dhanda` folder in any desired app.
+Open the `ujjwal` folder in any desired app.
 Open terminal/command prompt and run following commands in the project folder
 
 `flutter clean`
@@ -92,16 +92,16 @@ Now, lets dive into the lib folder which has the main code for the application.
 
 ```dart
 
-import 'package:dhanda/binding/business_detail_binding.dart';
-import 'package:dhanda/binding/on_boarding_binding.dart';
-import 'package:dhanda/binding/pager_binding.dart';
-import 'package:dhanda/binding/login_binding.dart';
-import 'package:dhanda/screen/business_details_screen.dart';
-import 'package:dhanda/screen/login_screen.dart';
-import 'package:dhanda/screen/on_boarding_screen.dart';
-import 'package:dhanda/screen/pager_screen.dart';
-import 'package:dhanda/screen/splash_screen.dart';
-import 'package:dhanda/screen/referral_screen.dart';
+import 'package:ujjwal/binding/business_detail_binding.dart';
+import 'package:ujjwal/binding/on_boarding_binding.dart';
+import 'package:ujjwal/binding/pager_binding.dart';
+import 'package:ujjwal/binding/login_binding.dart';
+import 'package:ujjwal/screen/business_details_screen.dart';
+import 'package:ujjwal/screen/login_screen.dart';
+import 'package:ujjwal/screen/on_boarding_screen.dart';
+import 'package:ujjwal/screen/pager_screen.dart';
+import 'package:ujjwal/screen/splash_screen.dart';
+import 'package:ujjwal/screen/referral_screen.dart';
 
 import 'package:get/get.dart';
 
